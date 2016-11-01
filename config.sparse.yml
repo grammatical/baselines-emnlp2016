@@ -1,0 +1,52 @@
+# path to the root directory, https://github.com/grammatical/baselines-emnlp2016
+root: /path/to/baselines-emnlp2016
+
+dir:
+  # path to Moses, https://github.com/moses-smt/mosesdecoder
+  moses: /path/to/mosesdecoder
+  moses_bin: /path/to/mosesdecoder/tools
+  # path to lazy decoder, https://github.com/kpu/lazy
+  lazy: /path/to/lazy
+  # path to NLTK data, http://www.nltk.org/data.html
+  nltk_data: /path/to/nltk_data
+  # path to SRILM, http://www.speech.sri.com/projects/srilm/download.html
+  srilm: /path/to/srilm/bin/i686-m64
+
+experiment:
+  # path to working directory
+  dir: /path/to/workdir
+  cross: true
+  n: 4
+  # number of threads
+  jobs: 4
+
+features:
+  lm: true
+  wclm: true
+  osm: true
+  esm: true
+  editops: true
+  sparse: true
+
+data:
+  # path to the NUCLE corpus, http://www.comp.nus.edu.sg/~nlp/conll14st.html#nucle32
+  train_m2: /path/to/nucle/nucle-3.0/data/conll14st-preprocessed.m2
+  test2013_m2: /path/to/nucle/release2.3.1/original/data/official-preprocessed.m2
+  test2014_m2: /path/to/nucle/official-2014/official-2014.combined.m2
+
+  # path to the Lang8-NAIST corpus, http://cl.naist.jp/nldata/lang-8/
+  more_txt: /path/to/data/lang8.50k.tok.txt
+
+  # path to provided language model data
+  lm_path: "0:5:/path/to/data/wiki.blm:8"
+  wclm_path: "1:9:/path/to/data/wiki.wclm.kenlm:8"
+  wc_path: /path/to/data/wiki.classes.gz
+  tc_lm: /path/to/data/wiki.blm
+
+tuning:
+  # allowed values: mert, pro, prostart, kbmirastart, bmira
+  algorithm: bmira
+  remert: 5
+  max_it: 15
+  # number of MERT parallel jobs
+  mert_jobs: 2
