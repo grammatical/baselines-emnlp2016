@@ -33,22 +33,22 @@ This folder contains example outputs from our systems described in the paper for
 CoNLL-test2014.
 
 
-  .
-  ├── cclm
-  │   ├── baseline+cclm.out
-  │   ├── best.dense+cclm.out
-  │   └── best.sparse+cclm.out
-  ├── nonpublic
-  │   ├── cclm+np
-  │   │   ├── best.dense.out
-  │   │   └── best.sparse.out
-  │   └── wikilm+np
-  │       ├── best.dense.out
-  │       └── best.sparse.out
-  └── wikilm
-      ├── baseline.out
-      ├── best.dense.out
-      └── best.sparse.out
+    .
+    ├── cclm
+    │   ├── baseline+cclm.out
+    │   ├── best.dense+cclm.out
+    │   └── best.sparse+cclm.out
+    ├── nonpublic
+    │   ├── cclm+np
+    │   │   ├── best.dense.out
+    │   │   └── best.sparse.out
+    │   └── wikilm+np
+    │       ├── best.dense.out
+    │       └── best.sparse.out
+    └── wikilm
+        ├── baseline.out
+        ├── best.dense.out
+        └── best.sparse.out
 
 
 
