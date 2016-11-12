@@ -69,7 +69,7 @@ To train the baseline models you will need to install:
 * [Lazy](https://github.com/kpu/lazy)
 * [SRILM](http://www.speech.sri.com/projects/srilm/download.html)
 
-Download [training data](odkrywka.wmi.amu.edu.pl/static/data/baselines-emnlp2016/data.tgz) and
+Download [training data](http://odkrywka.wmi.amu.edu.pl/static/data/baselines-emnlp2016/data.tgz) and
 [the NUCLE Corpus](http://www.comp.nus.edu.sg/~nlp/conll14st.html#nucle32) with
 official test sets of the CoNLL Shared Tasks in 2013 and 2014, and adjust all
 paths in `config.*.yml` file.
