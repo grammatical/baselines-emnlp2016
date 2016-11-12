@@ -68,6 +68,8 @@ The language model data are available in separate packages:
 * [Wikipedia language model](http://odkrywka.wmi.amu.edu.pl/static/data/baselines-emnlp2016/wikilm.tgz) (22G)
 * [Common Crawl language model](http://odkrywka.wmi.amu.edu.pl/static/data/baselines-emnlp2016/cclm.tgz) (26G)
 
+The packages contain:
+
     wikilm/
     ├── wiki.blm
     ├── wiki.classes.gz
