@@ -43,8 +43,8 @@ and 9-gram kenLM language models, e.g.:
 
     /usr/bin/bjam -j16 --with-cmph=/usr/local/lib --max-kenlm-order=9
 
-Download [training data](odkrywka.wmi.amu.edu.pl/static/data/baselines-emnlp2016/data.tgz) and
-[baseline models](odkrywka.wmi.amu.edu.pl/static/data/baselines-emnlp2016/models.tgz).
+Download [training data](http://odkrywka.wmi.amu.edu.pl/static/data/baselines-emnlp2016/data.tgz) and
+[baseline models](http://odkrywka.wmi.amu.edu.pl/static/data/baselines-emnlp2016/models.tgz).
 
 Adjust absolute paths in `moses.*.ini` file.
 
