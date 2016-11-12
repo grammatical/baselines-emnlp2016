@@ -43,10 +43,48 @@ and 9-gram kenLM language models, e.g.:
 
     /usr/bin/bjam -j16 --with-cmph=/usr/local/lib --max-kenlm-order=9
 
-Download [training data](http://odkrywka.wmi.amu.edu.pl/static/data/baselines-emnlp2016/data.tgz) and
-[baseline models](http://odkrywka.wmi.amu.edu.pl/static/data/baselines-emnlp2016/models.tgz).
+Download [training data](http://odkrywka.wmi.amu.edu.pl/static/data/baselines-emnlp2016/data.tgz):
 
-Adjust absolute paths in `moses.*.ini` file.
+    data
+    ├── lang8.tok.txt
+    ├── wiki.blm
+    ├── wiki.classes.gz
+    └── wiki.wclm.kenlm
+
+and [a package with Common Crawl language model](http://odkrywka.wmi.amu.edu.pl/static/data/baselines-emnlp2016/data-cclm.tgz) if you want to run our final models:
+
+    data-cclm/
+    ├── cc.classes.gz
+    ├── cc.kenlm
+    └── cc.wclm.kenlm
+
+Download [model files](http://odkrywka.wmi.amu.edu.pl/static/data/baselines-emnlp2016/models.tgz).
+
+    models/
+    ├── dense
+    │   ├── lm.cor.kenlm
+    │   ├── osm.kenlm
+    │   └── phrase-table.0-0.gz
+    ├── dense-cclm
+    │   ├── lm.cor.kenlm
+    │   ├── osm.kenlm
+    │   └── phrase-table.0-0.gz
+    ├── moses.dense-cclm.mert.avg.ini
+    ├── moses.dense.mert.avg.ini
+    ├── moses.sparse-cclm.mert.avg.ini
+    ├── moses.sparse.mert.avg.ini
+    ├── sparse
+    │   ├── lm.cor.kenlm
+    │   ├── moses.mert.5.ini.sparse
+    │   ├── osm.kenlm
+    │   └── phrase-table.0-0.gz
+    └── sparse-cclm
+        ├── lm.cor.kenlm
+        ├── moses.mert.5.ini.sparse
+        ├── osm.kenlm
+        └── phrase-table.0-0.gz
+
+Adjust absolute paths in `moses.*.ini` files.
 
 Run _moses_, e.g.:
 
@@ -82,4 +120,5 @@ Use the produced `moses.ini` file to run the system:
 
     /path/to/mosesdecoder/bin/moses -f /path/to/workdir/release/work.err-cor/binmodel.err-cor/moses.mert.avg.ini < input.txt
 
-
+You can also train a system using [Common Crawl language
+model](http://odkrywka.wmi.amu.edu.pl/static/data/baselines-emnlp2016/data-cclm.tgz).

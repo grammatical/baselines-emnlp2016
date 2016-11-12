@@ -35,7 +35,7 @@ data:
   test2014_m2: /path/to/nucle/official-2014/official-2014.combined.m2
 
   # path to the Lang8-NAIST corpus, http://cl.naist.jp/nldata/lang-8/
-  more_txt: /path/to/data/lang8.50k.tok.txt
+  more_txt: /path/to/data/lang8.tok.txt
 
   # path to provided language model data
   lm_path: "0:5:/path/to/data/wiki.blm:8"
