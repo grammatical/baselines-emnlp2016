@@ -396,7 +396,7 @@ if ($REMERT) {
                                 $MERT
                                     .= " $MOSESDECODER $abscurr/work.err-cor/binmodel.err-cor/moses.ini"
                                     . " --working-dir=$abscurr/work.err-cor/tuning.$k.$run"
-                                    . " --mertdir=/data/smt/mosesdecoder/bin"
+                                    . " --mertdir=$MOSESDIR/bin"
                                     . " --mertargs \"--sctype $SCORER\"" # --scconfig $SCCONFIG\""
                                     . " --no-filter-phrase-table"
                                     . " --nbest=100"
@@ -491,7 +491,7 @@ if ($REMERT) {
                 $MERT
                     .= " $MOSESDECODER $RDIR/work.err-cor/binmodel.err-cor/moses.ini"
                     . " --working-dir=$RDIR/work.err-cor/tuning$infix"
-                    . " --mertdir=/data/smt/mosesdecoder/bin"
+                    . " --mertdir=$MOSESDIR/bin"
                     . " --mertargs \"--sctype $SCORER --scconfig $SCCONFIG\""
                     . " --no-filter-phrase-table"
                     . " --nbest=100 --range VW0:0..1"
