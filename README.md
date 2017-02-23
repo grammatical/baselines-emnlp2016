@@ -26,6 +26,25 @@ Citation
     }
 
 
+Update
+------
+
+The results reported in the camera-ready version of the paper on the dataset
+from _Bryant and Ng (2015)_ (Tab. 4, three last columns) are understated due to
+the invalid preparation of the M2 file. The correct scores are as follows:
+
+| System | Prec. | Recall | M^2 |
+| :--- | --- | --- | --- |
+| Baseline    | 69.22 | 37.00 | 58.95 |
+| +CCLM       | 76.66 | 36.39 | 62.77 |
+| Best dense  | 71.11 | 37.44 | 60.27 |
+| +CCLM       | 79.76 | 39.52 | 66.27 |
+| Best sparse | 76.48 | 35.99 | 62.43 |
+| +CCLM       | 80.57 | 39.74 | 66.83 |
+
+We would like to thank Shamil Chollampatt for reporting this issue!
+
+
 Outputs
 -------
 
