@@ -37,8 +37,8 @@ def detokenize_nltk(text):
     text = re.sub('! !( !)+', '!!!', text)
     text = re.sub(r'\s*[,;]+\s*([.!?]["\'\)\]\}]?|["\'\)\]\}][.!?])$', r'\1', text) # ,. => .
 
-    while re.search(r'[A-Z]\. [A-Z]\.', text):
-        text = re.sub(r'\b([A-Z]\.) ([A-Z].)', r'\1\2', text) # A. B. C.
+    while re.search(r'\b[A-Z]\. [A-Z]\.', text):
+        text = re.sub(r'\b([A-Z]\.) ([A-Z]\.)', r'\1\2', text) # A. B. C.
     text = re.sub(r'([A-Z]) & ([A-Z])', r'\1&\2', text) # AT & T
     #text = re.sub(r'([A-Za-z0-9])', (lambda x: x.group(1).capitalize()), text, 1) # ^a => A
     #text = re.sub(r'([a-zA-Z0-9])(["\)\]\}])$', r'\1.\2', text) # a" => a."
