@@ -142,3 +142,10 @@ Training models
 ---------------
 
 Training is described in the README in the folder `train`.
+
+
+Acknowledgments
+---------------
+
+This project was partially funded by the Polish National Science Centre (Grant
+No. 2014/15/N/ST6/02330).
