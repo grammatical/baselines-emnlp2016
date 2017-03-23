@@ -26,8 +26,19 @@ Citation
     }
 
 
-Update
-------
+Update on CCLM+sparse models
+----------------------------
+
+We have updated the model which use CCLM and sparse features. That model was
+used to generate results reported in the paper as _Best sparse + CCLM_. Moses
+.ini files are available in the folder `models`.
+
+We also provide the script `models/run_gecsmt.py` to run our models (see notes
+below).
+
+
+Update for 10gec dataset
+------------------------
 
 The results reported in the camera-ready version of the paper on the dataset
 from _Bryant and Ng (2015)_ (Tab. 4, three last columns) are understated due to
@@ -105,7 +116,26 @@ language models. Finally, run _moses_, e.g.:
     /path/to/mosesdecoder/bin/moses -f moses.dense.mert.avg.ini < input.txt
 
 The input file should contain one sentence per line and each sentence has to
-follow the Moses tokenization.
+follow the Moses tokenization and truecasing as it is presented in
+`train/run_cross.perl`.
+
+Alternatively you can use the script `models/run_gecsmt.py`, which performs
+pre- and postprocessing, e.g.:
+
+    python ./run/run_gecsmt.py -f moses.ini -w workdir -i input.txt -o output.txt
+
+It can be used to evaluate M2 input:
+
+    python ./run/run_gecsmt.py -f moses.ini -w workdir -i test2014.m2 --m2
+
+You will need to provide paths to Moses, Lazy and this repository. Use `--help`
+option for more details.
+
+Running our models might give slightly different results (up to +/- 0.0020
+F-score) than the results presented in the paper due to the different versions
+of the official CoNLL-2014 test set (we used the version provided during the
+CoNLL shared task), M2Scorer, NLTK tokenizer, Moses, and the LM used for
+truecasing.
 
 
 Training models
