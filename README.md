@@ -26,6 +26,18 @@ Citation
     }
 
 
+Update on phrase tables
+-----------------------
+
+The phrase table that we have made publicly available for download were
+filtered for CoNLL test sets.  The evaluation of our systems with that PT on
+other data sets makes no sense.  Now, we provide the original unfiltered phrase
+table in binarized format (due to its size).  The outputs for CoNLL test sets
+produced with a binarized PT should remain unchanged.
+
+All .ini files and instructions how to use them have been updated.
+
+
 Update on CCLM+sparse models
 ----------------------------
 
@@ -68,14 +80,15 @@ Baseline models
 ---------------
 
 You can download and run [our baseline
-models](http://odkrywka.wmi.amu.edu.pl/static/data/baselines-emnlp2016/models.tgz)
-(558M).
+models](http://data.statmt.org/romang/gec-emnlp16/models.tgz) (1,3G).
+
 
     models/
     ├── data
     │   ├── lm.cor.kenlm
     │   ├── osm.kenlm
-    │   └── phrase-table.0-0.gz
+    │   ├── phrase-table.0-0.gz
+    │   └── phrase-table.0-0.unfiltered.minphr
     ├── moses.dense-cclm.mert.avg.ini
     ├── moses.dense.mert.avg.ini
     ├── moses.sparse-cclm.mert.avg.ini
@@ -87,11 +100,13 @@ models](http://odkrywka.wmi.amu.edu.pl/static/data/baselines-emnlp2016/models.tg
 The four configuration `*.ini` files corresponds to the last four systems
 described in Table 4.
 
-To use the models you have to install [Moses
-decoder](https://github.com/moses-smt/mosesdecoder) (branch `master`) It has to
-be compiled with support for 9-gram kenLM language models, e.g.:
+To use the models you need to install [Moses
+decoder](https://github.com/moses-smt/mosesdecoder) (branch `master`). It has
+to be compiled with support for 9-gram kenLM language models, and binarized
+tables by providing path to CMPH library (see details
+[here](http://www.statmt.org/moses/?n=Advanced.RuleTables#ntoc3), e.g.:
 
-    /usr/bin/bjam -j16 --max-kenlm-order=9
+    /usr/bin/bjam -j16 --max-kenlm-order=9 --with-cmph=/path/to/cmph
 
 The language model data are available in separate packages:
 
