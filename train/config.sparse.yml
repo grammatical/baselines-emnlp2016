@@ -24,7 +24,6 @@ features:
   lm: true
   wclm: true
   osm: true
-  esm: true
   editops: true
   sparse: true
 

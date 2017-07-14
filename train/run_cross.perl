@@ -41,7 +41,7 @@ die "Specify the working directory\n" unless $DIR;
 my $LM      = $CONFIG->{features}->{lm};
 my $WCLM    = $CONFIG->{features}->{wclm};
 my $OSM     = $CONFIG->{features}->{osm};
-my $ESM     = $CONFIG->{features}->{esm};
+my $ESM     = 0;
 my $EDITOPS = $CONFIG->{features}->{editops};
 my $SPARSE  = $CONFIG->{features}->{sparse};
 my $SPARSEOPT
