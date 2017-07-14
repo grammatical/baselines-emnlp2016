@@ -39,8 +39,8 @@ def main():
 
     # tokenize and truecase
     run_cmd("{scripts}/m2_tok/detokenize.py < {pfx}.in " \
-            " | {tok} | {tc} > {pfx}.in.tok"
-        .format(pfx=prefix, scripts=args.scripts, tok=TOK, tc=TC))
+            " | {tok} -threads {th} | {tc} > {pfx}.in.tok"
+        .format(pfx=prefix, scripts=args.scripts, tok=TOK, th=args.threads, tc=TC))
 
     # models with sparse features assume WC factored input
     if use_sparse:
