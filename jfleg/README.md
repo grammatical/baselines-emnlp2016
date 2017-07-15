@@ -29,10 +29,10 @@ Citation
 Results on JFLEG data set
 -------------------------
 
-This folder contains outputs from our systems described in the paper for [JFLEG
-data set](https://github.com/keisks/jfleg).  The results are reported in GLEU
-metric. The outputs are produced with SMT systems tuned on M^2 as they have
-been described in the paper.
+This folder contains outputs from our untouched systems described in the paper
+for [JFLEG data set](https://github.com/keisks/jfleg).  The results are
+reported in GLEU metric. The outputs are produced with SMT systems tuned on
+M^2 as it has been described in the paper.
 
 | System | JFLEG dev | JFLEG test |
 | :--- | --- | --- |
@@ -51,16 +51,13 @@ additional non-public parallel data from the Lang8 website.  We do not consider
 these outputs as referential and would prefer if future publications do not
 reference these results due to the difficulty of comparison.
 
-
-System outputs
---------------
+All system outputs:
 
     .
     ├── dev.dense+cclm.out
     ├── dev.dense+wikilm.out
     ├── dev.sparse+cclm.out
     ├── dev.sparse+wikilm.out
-    ├── Makefile
     ├── nonpublic
     │   ├── dev.dense+cclm+nonpub.out
     │   ├── dev.dense+wikilm+nonpub.out
@@ -75,3 +72,20 @@ System outputs
     ├── test.sparse+cclm.out
     └── test.sparse+wikilm.out
 
+
+Tuning towards GLEU on JFLEG dev
+--------------------------------
+
+We also report the results for the systems described in the paper, but tuned
+towards GLEU using the JFLEG dev set. No modifications of the binaries of any
+form, i.e. the same language models, phrase table, and OSMs.
+
+| System | JFLEG dev | JFLEG test |
+| :--- | --- | --- |
+| Best dense | 0.472840 | 0.503387 |
+| +CCLM | 0.474463 | 0.507673 |
+| Best sparse | 0.485563 | 0.508715 |
+| +CCLM | 0.497443 | 0.514643 |
+
+We reran the tuning step 5 times, averaged the model weights and executed one
+final translation step with the new weights.
