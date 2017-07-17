@@ -50,10 +50,28 @@ def main():
             .format(scripts=args.scripts, wc=WC, pfx=prefix))
 
     # run Moses
-    run_cmd("{moses}/bin/moses -f {ini}" \
-            " --alignment-output-file {pfx}.out.tok.aln -threads {th} -fd '|'" \
-            " < {pfx}.in.tok > {pfx}.out.tok" \
-        .format(moses=args.moses, ini=args.config, pfx=prefix, th=args.threads))
+    if args.nbest is not None:
+        run_cmd("{moses}/bin/moses -f {ini}" \
+                " -n-best-list - {nbest} distinct" \
+                " -print-alignment-info-in-n-best " \
+                " -labeled-n-best-list false " \
+                " -threads {th} -fd '|'" \
+                " < {pfx}.in.tok > {pfx}.out.tok.nbest" \
+            .format(moses=args.moses, ini=args.config, pfx=prefix,
+                    th=args.threads, nbest=args.nbest))
+
+        extract_text_and_alignment(
+            "{}.out.tok.nbest".format(prefix), "{}.in".format(prefix),
+            "{}.out.tok".format(prefix), "{}.out.tok.aln".format(prefix),
+            "{}.in.nbest".format(prefix))
+
+        run_cmd("cp {pfx}.in {pfx}.in.bac".format(pfx=prefix))
+        run_cmd("mv {pfx}.in.nbest {pfx}.in".format(pfx=prefix))
+    else:
+        run_cmd("{moses}/bin/moses -f {ini}" \
+                " --alignment-output-file {pfx}.out.tok.aln -threads {th} -fd '|'" \
+                " < {pfx}.in.tok > {pfx}.out.tok" \
+            .format(moses=args.moses, ini=args.config, pfx=prefix, th=args.threads))
 
     # restore casing and tokenization
     run_cmd("cat {pfx}.out.tok" \
@@ -62,15 +80,59 @@ def main():
             " | {scripts}/impose_tok.perl {pfx}.in > {pfx}.out" \
         .format(pfx=prefix, scripts=args.scripts, moses=args.moses))
 
+    if args.nbest:
+        reconstruct_nbest_list("{}.out.tok.nbest".format(prefix),
+                               "{}.out".format(prefix),
+                               "{}.out.nbest".format(prefix))
+
+        run_cmd("cp {pfx}.out {pfx}.out.bac".format(pfx=prefix))
+        run_cmd("mv {pfx}.out.nbest {pfx}.out".format(pfx=prefix))
+
     if args.output:
         run_cmd("cp {pfx}.out {out}".format(pfx=prefix, out=args.output))
 
     # evaluate if possible
-    if args.m2:
+    if args.m2 and not args.nbest:
         run_cmd("{scripts}/m2scorer_fork {pfx}.out {f} > {pfx}.eval" \
             .format(scripts=args.scripts, pfx=prefix, f=args.input))
         with open("{}.eval".format(prefix)) as eval_io:
             print eval_io.read().strip()
+
+
+def reconstruct_nbest_list(nbest_in, txt_in, nbest_out):
+    txt_io = open(txt_in)
+    out_io = open(nbest_out, 'w+')
+    with open(nbest_in) as nbest_io:
+        for line in nbest_io:
+            sent = txt_io.next().strip()
+            idx, _, _, score, _ = line.strip().split(" ||| ")
+            out_io.write("{i} ||| {t} ||| {s}\n".format(
+                i=idx, t=sent, s=score))
+    txt_io.close()
+    out_io.close()
+
+
+def extract_text_and_alignment(nbest_file, orig_in, txt_out, aln_out,
+                               orig_out):
+    txt_io = open(txt_out, 'w+')
+    aln_io = open(aln_out, 'w+')
+    org1_io = open(orig_in)
+    org2_io = open(orig_out, 'w+')
+    with open(nbest_file) as nbest_io:
+        last_idx = -1
+        orig_sent = None
+        for line in nbest_io:
+            idx, sent, _, _, align = line.strip().split(" ||| ")
+            if int(idx) != last_idx:
+                orig_sent = org1_io.next()
+                last_idx = int(idx)
+            txt_io.write(sent.strip() + "\n")
+            aln_io.write(align.strip() + "\n")
+            org2_io.write(orig_sent)
+    txt_io.close()
+    aln_io.close()
+    org1_io.close()
+    org2_io.close()
 
 
 def run_cmd(cmd):
@@ -122,6 +184,7 @@ def parse_user_args():
         default=SCRIPTS)
     parser.add_argument(
         "-t", "--threads", help="Number of threads", type=int, default=THREADS)
+    parser.add_argument("--nbest", help="Generate n-best list", type=int)
     return parser.parse_args()
 
 
