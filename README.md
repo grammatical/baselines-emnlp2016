@@ -38,7 +38,7 @@ We publish the text data we used for training a web-scale language model
 
 The data is tokenized with NLTK tokenizer and truecased with the Moses
 truecaser. All parts are separate files and can be separately extracted using
-the `xz` tool. Parts 00-04 include 1000M lines, the part 05 includes
+the `xz` tool. Parts 00-04 consist of 1000M lines, part 05 consists of
 291,262,763 lines.
 
 ### Results on JFLEG data sets
