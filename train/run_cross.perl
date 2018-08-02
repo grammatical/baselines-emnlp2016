@@ -30,9 +30,9 @@ my $CONFIG = LoadFile($CONFIG_FILE);
 
 # experiment
 $DIR = $CONFIG->{experiment}->{dir} unless $DIR;
-my $CROSS = 1;
-my $N     = 2;
-my $JOBS  = 4;
+my $CROSS = $CONFIG->{experiment}->{cross};
+my $N     = $CONFIG->{experiment}->{n} || 2;
+my $JOBS  = $CONFIG->{experiment}->{jobs} || 4;
 my $PARTS = 1;
 
 die "Specify the working directory\n" unless $DIR;
