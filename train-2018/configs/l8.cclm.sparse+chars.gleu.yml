@@ -1,0 +1,62 @@
+# path to the root directory
+root: <path-to>/baselines-emnlp2016/train-2018
+
+dir:
+  moses: <path-to>/mosesdecoder
+  moses_bin: <path-to>/moses/tools
+  subword_nmt: <path-to>/subword-nmt
+  m2scorer: <path-to>/m2scorer
+
+experiment:
+  # path to working directory
+  dir: ./l8.cclm.sparse.gleu
+  cross: false
+  n: 4
+  # number of parallel jobs
+  jobs: 2
+  threads: 16
+
+features:
+  lm: true
+  wclm: true
+  poslm: false
+  osm: true
+  esm: false
+  editops: true
+  levenshtein: true
+  charops: true
+  sparse: true
+
+data:
+  train_txt: <path-to>/lang8.lc.bpe.txt
+  dev_orig: <path-to>/jfleg.dev.src+refs.txt
+
+  tests_m2:
+    test2013: <path-to>/test2013.m2
+    test2014: <path-to>/test2014.m2
+    10gec: <path-to>/10gec.m2
+
+  tests_gleu:
+    jflegdev: <path-to>/jfleg.dev.src+refs.txt
+    jflegtest: <path-to>/jfleg.test.src+refs.txt
+
+  lm_path: "0:5:<path-to>/sim.nltk.esc.bpe.kenlm:8"
+  wclm_path: "1:9:<path-to>/sim.wclm.kenlm:8"
+  wc_path: <path-to>/wclm.sim.classes
+  poslm_path:
+  pos_path:
+
+  tc: <path-to>/tc.model
+  bpe: <path-to>/gec.bpe
+
+  augmented_pt: false
+
+tuning:
+  # allowed values: m2, bleu, gleu
+  metric: gleu
+  # allowed values: mert, pro, prostart, kbmirastart, bmira
+  algorithm: bmira
+  remert: 4
+  max_it: 15
+  # number of MERT parallel jobs
+  jobs: 4

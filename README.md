@@ -29,7 +29,17 @@ Citation
 Updates
 -------
 
-**Last update: 22/12/2017**
+**Last update: 3/8/2018**
+
+### Updated training scripts
+
+The `train-2018` directory contains updated training scripts and instructions
+that we used to create SMT systems in our paper: R. Grundkiewicz, M.
+Junczys-Dowmunt [Near Human-Level Performance in Grammatical Error Correction
+with Hybrid Machine Translation](http://aclweb.org/anthology/N18-2046), NAACL
+2018 [[bibtex]](http://aclweb.org/anthology/N18-2046.bib)
+Main modifications include switching to NLTK tokenization, using BPE subword
+segmentation, and adding GLEU tuning.
 
 ### Text data used for training CCLM
 
