@@ -42,9 +42,9 @@ To reproduce our systems from scratch, you need to have installed the following:
 You also need the following data:
 
 * [NUCLE Corpus](http://www.comp.nus.edu.sg/~nlp/conll14st.html#nucle32) with official test sets from the CoNLL 2013 and 2014 Shared Tasks
-* [Lang-8 NAIST](http://odkrywka.wmi.amu.edu.pl/static/data/baselines-emnlp2016/lang8.tgz) (63M)
-* [Wikipedia language model](http://odkrywka.wmi.amu.edu.pl/static/data/baselines-emnlp2016/wikilm.tgz) (22G)
-* [Common Crawl language model](http://odkrywka.wmi.amu.edu.pl/static/data/baselines-emnlp2016/cclm.tgz) (26G)
+* [Lang-8 NAIST](http://data.statmt.org/romang/gec-emnlp16/lang8.tgz) (63M)
+* [Wikipedia language model](http://data.statmt.org/romang/gec-emnlp16/wikilm.tgz) (22G)
+* [Common Crawl language model](http://data.statmt.org/romang/gec-emnlp16/cclm.tgz) (26G)
 
 Adjust all paths in `config.*.yml` file from this folder, and then run training scripts, e.g.:
 
