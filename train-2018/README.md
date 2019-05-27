@@ -29,7 +29,7 @@ You will also need the following data:
   official test sets from the CoNLL 2013 and 2014 Shared Tasks
 * [JFLEG Corpus](https://github.com/keisks/jfleg) for tuning and evaluation on
   GLEU
-* Preprocessed [Lang-8 Learner Corpora](http://cl.naist.jp/nldata/lang-8) for
+* Preprocessed [Lang-8 Learner Corpora](https://sites.google.com/site/naistlang8corpora/) for
   parallel training data
 * Common Crawl LM and WCLM trained on [this
   data](http://data.statmt.org/romang/gec-emnlp16/sim)
